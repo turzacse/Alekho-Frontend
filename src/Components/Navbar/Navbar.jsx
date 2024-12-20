@@ -6,8 +6,9 @@ const Navbar = () => {
       {/* Left Side: Menu Icon + Logo */}
       <div className="flex items-center space-x-4">
         <button className="text-white text-2xl">
-          <i className="fas fa-bars"></i> {/* Replace with an icon */}
+          <i className="fas fa-bars"></i>
         </button>
+        <img src="/logo.png" className="w-[40px] h-[40px]" alt="" />
         <h1 className="text-xl font-bold tracking-wide">ALEKHO</h1>
       </div>
 
