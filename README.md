@@ -50,4 +50,4 @@ Alekho Photography is a modern and elegant photography website designed to showc
 
 ## 📸 Live Demo
 
-Check out the live website: [Alekho Photography](#)
+Check out the live website: [https://alekhophotography.web.app/](#)
