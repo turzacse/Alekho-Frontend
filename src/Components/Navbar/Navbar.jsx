@@ -2,7 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-black text-white py-4 px-6 flex items-center justify-between container mx-auto">
+    <section className="bg-gray-950">
+      <nav className=" text-white py-4 px-6 flex items-center justify-between container mx-auto">
       {/* Left Side: Menu Icon + Logo */}
       <div className="flex items-center space-x-4">
         <button className="text-white text-2xl">
@@ -51,6 +52,7 @@ const Navbar = () => {
         </button>
       </div>
     </nav>
+    </section>
   );
 };
 
