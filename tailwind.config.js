@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         playwrite: ['"Playwrite España Decorativa Guides"', 'serif'],
       },
+      transitionDuration: {
+        500: "500ms",
+      },
     },
   },
   plugins: [],

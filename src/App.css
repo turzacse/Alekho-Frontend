@@ -2,4 +2,20 @@
     font-family: 'Playwrite España Decorativa Guides';
     src: url('/fonts/PlaywriteEspañaDecorativaGuides.ttf') format('truetype');
   }
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95); /* Slightly smaller initially */
+    }
+    to {
+      opacity: 1;
+      transform: scale(1); /* Back to original size */
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
   

@@ -29,9 +29,9 @@ const Navbar = () => {
         <a href="#" className="hover:text-gray-400 transition duration-300">
           Pages
         </a>
-        <a href="#" className="hover:text-gray-400 transition duration-300">
-          Gallery
-        </a>
+        <NavLink to='/gallery' className="hover:text-gray-400 transition duration-300">
+             Gallery
+        </NavLink>
         <a href="#" className="hover:text-gray-400 transition duration-300">
           Shop
         </a>

@@ -9,6 +9,7 @@ import "./index.css";
 import Main from './Layout/Main/Main.jsx';
 import Home from './Pages/Home/Home.jsx';
 import Reviews from './Pages/Reviews/Reviews.jsx';
+import Gallery from './Pages/Gallery/Gallery.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/reviews',
         element: <Reviews/>
+      },
+      {
+        path: '/gallery',
+        element: <Gallery/>
       }
     ]
   },
