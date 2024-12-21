@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const FeaturedPortfolio = () => {
   const portfolioItems = [
@@ -35,11 +36,11 @@ const FeaturedPortfolio = () => {
   ];
 
   return (
-    <section className="md:py-32 pt-10">
-      <div className="container mx-auto px-10">
+    <section className=" md:pt-10 pt-5">
+      <div className="">
         {/* Section Heading */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-50">Featured Portfolio</h2>
+          <h2 className="text-3xl font-bold text-yellow-300">Featured Portfolio</h2>
           <p className="text-gray-50 mt-2 ">
             A glimpse of our finest work that captures the essence of each moment.
           </p>
@@ -50,7 +51,7 @@ const FeaturedPortfolio = () => {
           {portfolioItems.map((item) => (
             <div
               key={item.id}
-              className="relative overflow-hidden rounded-lg shadow-lg group"
+              className="relative overflow-hidden md:rounded-lg shadow-lg group"
             >
               {/* Image */}
               <img
@@ -67,10 +68,10 @@ const FeaturedPortfolio = () => {
         </div>
 
         {/* View Full Gallery Button */}
-        <div className="text-center mt-10">
-          <button className="bg-gray-100 text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition">
+        <div className="text-center md:my-10 my-5">
+          <NavLink to='/gallery' className="bg-yellow-400 btn btn-sm text-gray-800 px-4 py-2 rounded-md hover:bg-yellow-300 transition">
             View Full Gallery
-          </button>
+          </NavLink>
         </div>
       </div>
     </section>

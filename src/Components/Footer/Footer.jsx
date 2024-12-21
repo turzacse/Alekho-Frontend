@@ -2,12 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-950 text-gray-300 py-10">
-      <div className="container mx-auto px-6 lg:px-20">
+    <footer className="bg-gray-950 text-gray-300 md:py-10 py-5">
+      <div className="container mx-auto md:px-6 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* About Section */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">About Us</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">About Us</h3>
             <p className="text-sm">
               We are a creative team dedicated to delivering high-quality designs and solutions. 
               Feel free to reach out for any inquiries or collaborations.
@@ -16,7 +16,7 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">Quick Links</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Quick Links</h3>
             <ul>
               <li className="mb-2 hover:text-teal-400 transition">
                 <a href="#home">Home</a>
@@ -38,7 +38,7 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">Contact Info</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Contact Info</h3>
             <ul>
               <li className="mb-2">123 Photography Street</li>
               <li className="mb-2">Dhaka, Bangladesh</li>

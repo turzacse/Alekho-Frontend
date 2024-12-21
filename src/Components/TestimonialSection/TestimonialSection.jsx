@@ -40,20 +40,20 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="bg-gray-100 py-12">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-8">What Our Clients Say</h2>
+    <section className="md:py-10 text-white py-5">
+      <div className="">
+        <h2 className="text-3xl text-yellow-300 font-bold text-center mb-8">What Our Clients Say</h2>
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (
             <div key={index} className="flex flex-col justify-center items-center text-center">
               <img
-                src={testimonial.image}
+                src='/logo.png'
                 alt={testimonial.name}
                 className="w-24 mx-auto h-24 rounded-full mb-4"
               />
               <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-              <p className="text-sm text-gray-500 mb-2">{testimonial.role}</p>
-              <p className="text-gray-700 italic mx-auto max-w-2xl">
+              <p className="text-sm  mb-2">{testimonial.role}</p>
+              <p className=" italic mx-auto max-w-2xl">
                 "{testimonial.feedback}"
               </p>
             </div>

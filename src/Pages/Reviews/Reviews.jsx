@@ -33,10 +33,10 @@ const Reviews = () => {
 
     emailjs
       .send(
-        "service_ushvm4s",
-        "template_73czlgr",
+        "service_1b47xuf",
+        "template_01u9x7z",
         templateParams,
-        "vrlkCZYPbhC9p05j6"
+        "CYmO9T5vqTHqBQNBj"
       )
       .then(
         (response) => {

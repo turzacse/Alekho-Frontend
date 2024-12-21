@@ -27,19 +27,19 @@ const BlogSection = () => {
   ];
 
   return (
-    <section className="bg-black text-white py-16">
-      <div className="container mx-auto px-10">
+    <section className="bg-black text-white md:py-10 py-5">
+      <div className="">
         {/* Section Heading */}
-        <h2 className="text-4xl font-bold  text-center mb-10">
+        <h2 className="text-3xl text-yellow-300 font-bold  text-center md:mb-10 mb-5">
           Latest Blog Posts
         </h2>
 
         {/* Blog Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid md:gap-8 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="bg-gray-300 rounded-b-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* Blog Image */}
               <img
@@ -49,11 +49,11 @@ const BlogSection = () => {
               />
 
               {/* Blog Content */}
-              <div className="p-6">
-                <h3 className="text-xl text-gray-600 font-bold  mb-3">
+              <div className="p-4">
+                <h3 className="md:text-xl text-gray-600 font-bold mb-1">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{post.description}</p>
+                <p className="text-gray-600 mb-2">{post.description}</p>
                 <NavLink
                   className="text-teal-500 hover:underline font-semibold"
                 >

@@ -39,17 +39,17 @@ const Header = () => {
   ];
 
   return (
-    <header className="relative mx-10">
+    <header className="relative">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="relative">
             <img
               src={slide.image}
               alt={`Slide ${index + 1}`}
-              className="w-full md:h-screen object-cover"
+              className="w-full md:h-screen h-[400px] object-cover border-2 border-white"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <h2 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
+              <h2 className="text-white text-xl md:text-3xl font-bold text-center px-4">
                 {slide.text}
               </h2>
             </div>

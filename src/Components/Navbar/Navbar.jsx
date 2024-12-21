@@ -125,18 +125,13 @@ const Navbar = () => {
         </div>
 
         {/* Middle: Navigation Links */}
-        <div className="hidden md:flex space-x-8 text-sm font-semibold uppercase">
-          <a href="#" className="hover:text-gray-400 transition duration-300 relative">
-            Home
-            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-600 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="#" className="hover:text-gray-400 transition duration-300">Blog</a>
-          <a href="#" className="hover:text-gray-400 transition duration-300">Pages</a>
-          <NavLink to='/gallery' className="hover:text-gray-400 transition duration-300">Gallery</NavLink>
-          <a href="#" className="hover:text-gray-400 transition duration-300">Shop</a>
-          <a href="#" className="hover:text-gray-400 transition duration-300">Contacts</a>
-          <a href="#" className="hover:text-gray-400 transition duration-300">Booking</a>
-          <NavLink to='/reviews' className="hover:text-gray-400 transition duration-300">Review</NavLink>
+        <div className="hidden md:flex space-x-4 text-sm font-semibold uppercase">
+        <NavLink to='/' className="text-white hover:text-gray-400">Home</NavLink>
+          <NavLink to='/gallery' className="text-white hover:text-gray-400">Gallery</NavLink>
+          <NavLink to='/reviews' className="text-white hover:text-gray-400">Review</NavLink>
+          <NavLink to='/shop' className="text-white hover:text-gray-400">Shop</NavLink>
+          <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
+          <NavLink to='/booking' className="text-white hover:text-gray-400">Booking</NavLink>
         </div>
 
         {/* Right Side: Icons and Join Button */}
@@ -182,7 +177,7 @@ const Navbar = () => {
           <NavLink to='/gallery' className="text-white hover:text-gray-400">Gallery</NavLink>
           <NavLink to='/reviews' className="text-white hover:text-gray-400">Review</NavLink>
           <NavLink to='/shop' className="text-white hover:text-gray-400">Shop</NavLink>
-          <NavLink to='/contacts' className="text-white hover:text-gray-400">Contacts</NavLink>
+          <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
           <NavLink to='/booking' className="text-white hover:text-gray-400">Booking</NavLink>
           <button
           onClick={toggleModal}
