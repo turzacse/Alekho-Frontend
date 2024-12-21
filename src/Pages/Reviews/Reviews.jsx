@@ -58,7 +58,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex items-center justify-center">
+    <div className="bg-black py-10 min-h-screen flex items-center justify-center">
     <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
       <h1 className="text-2xl font-bold text-center mb-6">
         Submit Your Review
