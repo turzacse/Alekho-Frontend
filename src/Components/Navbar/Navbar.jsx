@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -40,6 +41,9 @@ const Navbar = () => {
         <a href="#" className="hover:text-gray-400 transition duration-300">
           Booking
         </a>
+        <NavLink to='/reviews' className="hover:text-gray-400 transition duration-300">
+             Review
+        </NavLink>
       </div>
 
       {/* Right Side: Icons */}

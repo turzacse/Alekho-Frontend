@@ -6,7 +6,8 @@ import CallToAction from "../../Components/CallToAction/CallToAction";
 import BlogSection from "../../Components/BlogSection/BlogSection";
 import ContactUs from "../../Components/ContactUs/ContactUs";
 import { use } from "react";
-import Loading from "../../Layout/loading/Loading";
+import Loading from "../../Components/loading/Loading";
+import TestimonialSection from "../../Components/TestimonialSection/TestimonialSection";
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
           <AboutSection />
           <FeaturedPortfolio />
           <CallToAction />
+          <TestimonialSection/>
           <BlogSection />
           <ContactUs />
         </>
