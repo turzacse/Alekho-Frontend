@@ -40,7 +40,7 @@ const FeaturedPortfolio = () => {
         {/* Section Heading */}
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-50">Featured Portfolio</h2>
-          <p className="text-gray-50 mt-2">
+          <p className="text-gray-50 mt-2 ">
             A glimpse of our finest work that captures the essence of each moment.
           </p>
         </div>

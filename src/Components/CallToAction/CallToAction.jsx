@@ -2,7 +2,7 @@ import React from "react";
 
 const CallToAction = () => {
   return (
-    <section className="bg-gray-950 py-16 text-white">
+    <section className="bg-gray-950 py-16 mt-4 text-white">
       <div className="container mx-auto px-6 lg:px-20 text-center">
         {/* Heading */}
         <h2 className="text-2xl lg:text-3xl font-bold mb-4">
@@ -10,7 +10,7 @@ const CallToAction = () => {
         </h2>
         
         {/* Subtitle */}
-        <p className=" lg:text-lg mb-8">
+        <p className=" lg:text-lg mb-8 ">
           Transform your precious moments into timeless memories. Get in touch today 
           and let our expert team bring your vision to life.
         </p>
