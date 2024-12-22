@@ -5,6 +5,7 @@ const pageTitlesMap = {
     '/reviews': 'REVIEWS',
     '/contact-us': 'CONTACT US',
     '/gallery': 'GALLERY',
+    '/pricing': 'PRICING',
 };
 
 export const usePageTitle = () => {

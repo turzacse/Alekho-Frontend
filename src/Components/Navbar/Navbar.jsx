@@ -126,12 +126,13 @@ const Navbar = () => {
 
         {/* Middle: Navigation Links */}
         <div className="hidden md:flex space-x-4 text-sm font-semibold uppercase">
-        <NavLink to='/' className="text-white hover:text-gray-400">Home</NavLink>
+          <NavLink to='/' className="text-white hover:text-gray-400">Home</NavLink>
+          <NavLink to='/about' className="text-white hover:text-gray-400">About</NavLink>
           <NavLink to='/gallery' className="text-white hover:text-gray-400">Gallery</NavLink>
           <NavLink to='/reviews' className="text-white hover:text-gray-400">Review</NavLink>
           <NavLink to='/shop' className="text-white hover:text-gray-400">Shop</NavLink>
           <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
-          <NavLink to='/booking' className="text-white hover:text-gray-400">Booking</NavLink>
+          <NavLink to='/pricing' className="text-white hover:text-gray-400">Pricing</NavLink>
         </div>
 
         {/* Right Side: Icons and Join Button */}
@@ -180,8 +181,8 @@ const Navbar = () => {
           <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
           <NavLink to='/booking' className="text-white hover:text-gray-400">Booking</NavLink>
           <button
-          onClick={toggleModal}
-          className="bg-orange-600 text-white py-2 px-4 rounded-md mt-auto hover:bg-orange-500 flex items-center gap-2">
+            onClick={toggleModal}
+            className="bg-orange-600 text-white py-2 px-4 rounded-md mt-auto hover:bg-orange-500 flex items-center gap-2">
             <FaUserPlus className="" /> Join
           </button>
         </div>

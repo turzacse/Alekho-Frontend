@@ -11,6 +11,8 @@ import Home from './Pages/Home/Home.jsx';
 import Reviews from './Pages/Reviews/Reviews.jsx';
 import Gallery from './Pages/Gallery/Gallery.jsx';
 import Contact from './Pages/ContactUs/Contact.jsx';
+import About from './Pages/About/About.jsx';
+import Pricing from './Pages/Pricing/Pricing.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <Contact/>
+      },
+      {
+        path: '/about',
+        element: <About/>
+      },
+      {
+        path: '/pricing',
+        element: <Pricing/>
       }
     ]
   },
