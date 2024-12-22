@@ -2,6 +2,7 @@ import emailjs from "@emailjs/browser";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import PageHeading from "../../Components/PageHeading/PageHeading";
 
 const Reviews = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +52,10 @@ const Reviews = () => {
   };
 
   return (
+    <div>
+      {/* <PageHeading/> */}
     <div className="bg-black py-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6">
           Submit Your Review
@@ -187,6 +191,7 @@ const Reviews = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

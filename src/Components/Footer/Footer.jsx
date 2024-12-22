@@ -7,7 +7,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* About Section */}
           <div>
-            <h3 className="text-3xl font-bold text-white mb-4">About Us</h3>
+          <div className="flex items-center space-x-4 mb-4">
+          <img src="/logo.png" className="w-[40px] h-[40px]" alt="Logo" />
+          <h1 className="text-3xl font-bold tracking-wide">ALEKHO</h1>
+        </div>
             <p className="text-sm">
               We are a creative team dedicated to delivering high-quality designs and solutions. 
               Feel free to reach out for any inquiries or collaborations.

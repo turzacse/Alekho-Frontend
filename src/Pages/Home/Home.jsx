@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="py-10">
+    <div className="md:py-10 my-0">
       {isLoading ? (
         <Loading />
       ) : (
