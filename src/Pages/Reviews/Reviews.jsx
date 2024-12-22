@@ -16,7 +16,9 @@ const Reviews = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target ? e.target : { name: 'phoneNumber', value: e };
+    const { name, value } = e.target
+      ? e.target
+      : { name: "phoneNumber", value: e };
     setFormData({ ...formData, [name]: value });
   };
 
@@ -43,7 +45,13 @@ const Reviews = () => {
         (response) => {
           console.log("SUCCESS!", response.status, response.text);
           setSuccessMessage("Thank you for your review!");
-          setFormData({ name: "", email: "", phoneNumber: "", rating: "", feedback: "" });
+          setFormData({
+            name: "",
+            email: "",
+            phoneNumber: "",
+            rating: "",
+            feedback: "",
+          });
         },
         (error) => {
           console.error("FAILED...", error);
@@ -109,16 +117,20 @@ const Reviews = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 font-medium mb-2"
-              htmlFor="phoneNumber" 
+              htmlFor="phoneNumber"
             >
               Your Phone Number
             </label>
-            <PhoneInput
-              name="phoneNumber"
-              country={"bd"}
-              value={formData.phoneNumber}
-              onChange={handleChange}
-            />
+            <div className="w-full">
+              <PhoneInput
+                name="phoneNumber"
+                country={"bd"}
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                containerClass="w-full"
+                inputClass="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+              />
+            </div>
           </div>
 
           {/* Rating Field */}
