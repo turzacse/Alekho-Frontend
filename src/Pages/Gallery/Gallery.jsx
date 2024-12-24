@@ -48,10 +48,7 @@
 import React, { useState } from "react";
 
 const Gallery = () => {
-  // Example categories
-  const categories = ["All", "Landscape", "Portrait", "Nature", "Architecture", "Fashion"];
-
-  // Example images with categories
+  const categories = ["All", "Landscape", "Portrait", "Nature", "Architecture", "Fashion","wildlife","plants and flower","Macro photography"];
   const images = [
     { src: "/about.jpg", category: "Landscape" },
     { src: "/slider2.jpg", category: "Portrait" },
@@ -65,17 +62,22 @@ const Gallery = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Filter images based on selected category
   const filteredImages = selectedCategory === "All" ? images : images.filter(image => image.category === selectedCategory);
 
   return (
-    <div className="bg-black min-h-screen py-12 px-10 flex">
+    <div className="bg-black min-h-screen py-8 px-4 md:px-10 flex flex-col md:flex-row">
       {/* Sidebar Section */}
-      <div className="w-1/5 p-6 shadow-lg border-r-2 border-white">
+      <div className="md:w-1/5 w-full p-6 shadow-lg border-b-2 md:border-b-0 md:border-r-2 border-white mb-8 md:mb-0">
         <h2 className="text-2xl font-bold text-white mb-6">Filter by Category</h2>
-        <ul>
+        <ul className="flex flex-wrap md:flex-col gap-4 md:gap-0">
           {categories.map((category, index) => (
-            <li key={index} className="text-white mb-4 cursor-pointer" onClick={() => setSelectedCategory(category)}>
+            <li
+              key={index}
+              className={`text-white cursor-pointer ${
+                selectedCategory === category ? "font-bold text-indigo-400" : ""
+              }`}
+              onClick={() => setSelectedCategory(category)}
+            >
               {category}
             </li>
           ))}
@@ -83,22 +85,22 @@ const Gallery = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="w-3/4 ml-8">
+      <div className="flex-1">
         {/* Title Section */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white">Our Gallery</h1>
           <p className="text-gray-400 mt-2">Explore our collection of amazing photos</p>
         </div>
 
-        {/* Gallery Section */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 md:px-4">
           {filteredImages.map((image, index) => (
             <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg">
               {/* Image */}
               <img
                 src={image.src}
                 alt={`Gallery Image ${index + 1}`}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
               />
 
               {/* Hover Text */}
@@ -114,6 +116,7 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
 
 
 
