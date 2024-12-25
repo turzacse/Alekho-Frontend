@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FeaturedPortfolio = () => {
   const portfolioItems = [
@@ -35,6 +36,17 @@ const FeaturedPortfolio = () => {
     },
   ];
 
+  const upcoming = (event) => {
+    event.preventDefault(); // Prevent the default action
+    Swal.fire({
+      text: 'Coming Soon!',
+      icon: 'warning',
+      background: '#030712', // Dark background
+      color: 'white',        // White text color for contrast
+      confirmButtonColor: '#FF5733', // Optional: Customize button color
+    });
+  };
+
   return (
     <section className=" md:pt-10 pt-5">
       <div className="">
@@ -69,7 +81,7 @@ const FeaturedPortfolio = () => {
 
         {/* View Full Gallery Button */}
         <div className="text-center md:my-10 my-5">
-          <NavLink to='/gallery' className="bg-yellow-400 btn btn-sm text-gray-800 px-4 py-2 rounded-md hover:bg-yellow-300 transition">
+          <NavLink onClick={upcoming}  className="bg-yellow-400 btn btn-sm text-gray-800 px-4 py-2 rounded-md hover:bg-yellow-300 transition">
             View Full Gallery
           </NavLink>
         </div>

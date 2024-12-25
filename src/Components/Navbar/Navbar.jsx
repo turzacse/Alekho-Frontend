@@ -100,6 +100,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaSearch, FaShoppingCart, FaUserPlus, FaFacebook, FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -115,9 +116,21 @@ const Navbar = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const upcoming = (event) => {
+    event.preventDefault(); // Prevent the default action
+    Swal.fire({
+      text: 'Coming Soon!',
+      icon: 'warning',
+      background: '#030712', // Dark background
+      color: 'white',        // White text color for contrast
+      confirmButtonColor: '#FF5733', // Optional: Customize button color
+    });
+  };
+  
+
   return (
     <section className="bg-gray-950">
-      <nav className="text-white py-4 px-6 flex items-center justify-between container mx-auto">
+      <nav className="text-white py-4 px-4 md:px-6 flex items-center justify-between container mx-auto">
         {/* Left Side: Logo + Website Name */}
         <NavLink to='/' className="flex items-center space-x-4">
           <img src="/logo.png" className="w-[40px] h-[40px]" alt="Logo" />
@@ -128,19 +141,23 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-4 text-sm font-semibold uppercase">
           <NavLink to='/' className="text-white hover:text-gray-400">Home</NavLink>
           <NavLink to='/about' className="text-white hover:text-gray-400">About</NavLink>
-          <NavLink to='/gallery' className="text-white hover:text-gray-400">Gallery</NavLink>
-          <NavLink to='/reviews' className="text-white hover:text-gray-400">Review</NavLink>
-          <NavLink to='/shop' className="text-white hover:text-gray-400">Shop</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Gallery</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Review</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Shop</NavLink>
           <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
-          <NavLink to='/pricing' className="text-white hover:text-gray-400">Pricing</NavLink>
+          <NavLink onClick={upcoming} className="text-white hover:text-gray-400">Pricing</NavLink>
         </div>
 
         {/* Right Side: Icons and Join Button */}
         <div className="hidden md:flex items-center space-x-6">
-          <button>
+          <button
+          onClick={upcoming} 
+          >
             <FaSearch className="text-xl hover:text-gray-400" />
           </button>
-          <button>
+          <button
+          onClick={upcoming} 
+          >
             <FaShoppingCart className="text-xl hover:text-gray-400" />
           </button>
           <button
@@ -175,11 +192,12 @@ const Navbar = () => {
             </button>
           </div>
           <NavLink to='/' className="text-white hover:text-gray-400">Home</NavLink>
-          <NavLink to='/gallery' className="text-white hover:text-gray-400">Gallery</NavLink>
-          <NavLink to='/reviews' className="text-white hover:text-gray-400">Review</NavLink>
-          <NavLink to='/shop' className="text-white hover:text-gray-400">Shop</NavLink>
+          <NavLink to='/about' className="text-white hover:text-gray-400">About</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Gallery</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Review</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Shop</NavLink>
           <NavLink to='/contact-us' className="text-white hover:text-gray-400">Contacts</NavLink>
-          <NavLink to='/booking' className="text-white hover:text-gray-400">Booking</NavLink>
+          <NavLink onClick={upcoming}  className="text-white hover:text-gray-400">Pricing</NavLink>
           <button
             onClick={toggleModal}
             className="bg-orange-600 text-white py-2 px-4 rounded-md mt-auto hover:bg-orange-500 flex items-center gap-2">
@@ -194,10 +212,10 @@ const Navbar = () => {
           <div className="bg-gray-950 w-4/5 sm:w-[600px] p-6 md:p-20 rounded-lg">
             <h2 className="text-white text-2xl font-semibold mb-4 text-center">Join With Us</h2>
             <div className="space-y-4">
-              <button className="w-full bg-blue-600 text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-blue-500 transition duration-300">
+              <button onClick={upcoming}  className="w-full bg-blue-600 text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-blue-500 transition duration-300">
                 <FaFacebook className="text-xl" /> Join With Facebook
               </button>
-              <button className="w-full bg-red-600 text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-red-500 transition duration-300">
+              <button onClick={upcoming}  className="w-full bg-red-600 text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-red-500 transition duration-300">
                 <FaGoogle className="text-xl" /> Join With Google
               </button>
             </div>

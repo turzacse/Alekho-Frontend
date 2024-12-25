@@ -1,6 +1,17 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
+  const upcoming = (event) => {
+      event.preventDefault(); // Prevent the default action
+      Swal.fire({
+        text: 'Coming Soon!',
+        icon: 'warning',
+        background: '#030712', // Dark background
+        color: 'white',        // White text color for contrast
+        confirmButtonColor: '#FF5733', // Optional: Customize button color
+      });
+    };
   return (
     <section className="bg-black text-white md:py-10 py-5">
       <div className="">
@@ -60,6 +71,7 @@ const ContactUs = () => {
 
               {/* Submit Button */}
               <button
+                onClick={upcoming} 
                 type="submit"
                 className="bg-teal-500 text-black font-semibold py-2 px-4 rounded-md hover:bg-teal-600 transition duration-300"
               >

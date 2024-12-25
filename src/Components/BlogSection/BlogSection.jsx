@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BlogSection = () => {
   const blogPosts = [
@@ -25,6 +26,17 @@ const BlogSection = () => {
       link: "#",
     },
   ];
+
+  const upcoming = (event) => {
+    event.preventDefault(); // Prevent the default action
+    Swal.fire({
+      text: 'Coming Soon!',
+      icon: 'warning',
+      background: '#030712', // Dark background
+      color: 'white',        // White text color for contrast
+      confirmButtonColor: '#FF5733', // Optional: Customize button color
+    });
+  };
 
   return (
     <section className="bg-black text-white md:py-10 py-5">
@@ -55,6 +67,7 @@ const BlogSection = () => {
                 </h3>
                 <p className="text-gray-600 mb-2">{post.description}</p>
                 <NavLink
+                  onClick={upcoming}
                   className="text-teal-500 hover:underline font-semibold"
                 >
                   Read More →

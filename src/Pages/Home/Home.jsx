@@ -9,6 +9,7 @@ import { use } from "react";
 import Loading from "../../Components/loading/Loading";
 import TestimonialSection from "../../Components/TestimonialSection/TestimonialSection";
 import BestOf2024 from "../../Components/BestOf2024/BestOf2024";
+import WhatWeDo from "../../Components/WhatWeDo/WhatWeDo";
 
 const Home = () => {
 
@@ -22,13 +23,14 @@ const Home = () => {
 
   return (
     <div className="md:py-10 my-0">
-      {isLoading ? (
+      {/* {isLoading ? (
         <Loading />
-      ) : (
+      ) : ( */}
         <>
           <Header />
           {/* <img className='w-[100%] md:h-[600px] md:px-20 px-10 rounded-md' src="/photo1.jpg" alt="" /> */}
           <AboutSection />
+          <WhatWeDo/>
           <FeaturedPortfolio />
           <BestOf2024/>
           <CallToAction />
@@ -36,7 +38,7 @@ const Home = () => {
           <BlogSection />
           <ContactUs />
         </>
-      )}
+      {/* )} */}
     </div>
   );
 };
