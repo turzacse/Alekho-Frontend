@@ -8,6 +8,7 @@ import ContactUs from "../../Components/ContactUs/ContactUs";
 import { use } from "react";
 import Loading from "../../Components/loading/Loading";
 import TestimonialSection from "../../Components/TestimonialSection/TestimonialSection";
+import BestOf2024 from "../../Components/BestOf2024/BestOf2024";
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
           {/* <img className='w-[100%] md:h-[600px] md:px-20 px-10 rounded-md' src="/photo1.jpg" alt="" /> */}
           <AboutSection />
           <FeaturedPortfolio />
+          <BestOf2024/>
           <CallToAction />
           <TestimonialSection/>
           <BlogSection />

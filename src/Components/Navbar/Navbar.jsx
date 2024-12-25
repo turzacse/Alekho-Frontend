@@ -119,10 +119,10 @@ const Navbar = () => {
     <section className="bg-gray-950">
       <nav className="text-white py-4 px-6 flex items-center justify-between container mx-auto">
         {/* Left Side: Logo + Website Name */}
-        <div className="flex items-center space-x-4">
+        <NavLink to='/' className="flex items-center space-x-4">
           <img src="/logo.png" className="w-[40px] h-[40px]" alt="Logo" />
           <h1 className="text-xl font-bold tracking-wide">ALEKHO</h1>
-        </div>
+        </NavLink>
 
         {/* Middle: Navigation Links */}
         <div className="hidden md:flex space-x-4 text-sm font-semibold uppercase">
