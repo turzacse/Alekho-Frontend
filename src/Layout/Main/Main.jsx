@@ -4,6 +4,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import PageHeading from '../../Components/PageHeading/PageHeading';
 import { usePageTitle } from '../../utils/pageTitles';
+import BottomBar from '../../Components/Bottom/BottomBar';
 
 const Main = () => {
     const title = usePageTitle();
@@ -16,6 +17,7 @@ const Main = () => {
                 <Outlet />
             </div>
             <Footer />
+            <BottomBar/>
         </div>
     );
 };

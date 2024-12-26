@@ -36,7 +36,7 @@ const Home = () => {
           <CallToAction />
           <TestimonialSection/>
           <BlogSection />
-          <ContactUs />
+          {/* <ContactUs /> */}
         </>
       {/* )} */}
     </div>

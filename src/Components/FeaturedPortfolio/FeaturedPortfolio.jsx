@@ -7,32 +7,32 @@ const FeaturedPortfolio = () => {
     {
       id: 1,
       img: "/slider1.jpg", 
-      title: "Wedding Moments",
+      title: "Creative Shoots",
     },
     {
       id: 2,
       img: "/slider2.jpg",
-      title: "Nature's Beauty",
+      title: "Sunrise",
     },
     {
       id: 3,
       img: "/slider3.jpg",
-      title: "Corporate Events",
+      title: "Nature's Beauty",
     },
     {
       id: 4,
       img: "/slider4.jpg",
-      title: "Family Portraits",
+      title: "River",
     },
     {
       id: 5,
       img: "/slider5.jpg",
-      title: "Golden Hour Magic",
+      title: "Golden Hour Magic with flower",
     },
     {
       id: 6,
       img: "/slider6.jpg",
-      title: "Creative Shoots",
+      title: "University Campus",
     },
   ];
 

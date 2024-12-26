@@ -91,7 +91,7 @@ const Footer = () => {
         <hr className="my-8 border-gray-700" />
 
         {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12 md:mb-0">
           <p className="text-sm">
             © {new Date().getFullYear()} Alekho. All rights reserved.
           </p>
