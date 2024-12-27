@@ -14,8 +14,9 @@ import Contact from './Pages/ContactUs/Contact.jsx';
 import About from './Pages/About/About.jsx';
 import Pricing from './Pages/Pricing/Pricing.jsx';
 import DashboardLayout from './Layout/Dashboard/DashboardLayout.jsx';
-import Album from './Pages/Album/Album.jsx';
-import PhotoGallery from './Pages/PhotoGallery/PhotoGallery.jsx';
+import Album from './AdminPages/Album/Album.jsx';
+import PhotoGallery from './AdminPages/PhotoGallery/PhotoGallery.jsx';
+import Blog from './AdminPages/Blog/Blog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/photo-gallery',
         element: <PhotoGallery/>
+      },
+      {
+        path: '/admin/blog',
+        element: <Blog/>
       }
     ]
   }

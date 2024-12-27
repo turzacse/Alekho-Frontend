@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MdAddAPhoto, MdDashboard, MdOutlinePayment } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
-import { FaCartArrowDown, FaHome } from "react-icons/fa";
+import { FaBlog, FaCartArrowDown, FaHome } from "react-icons/fa";
 import { BsCalendar2Date } from "react-icons/bs";
 import { GiHamburgerMenu, GiMedicines } from "react-icons/gi";
 import { LuBadgeHelp } from "react-icons/lu";
@@ -80,6 +80,15 @@ const DashboardLayout = () => {
                             >
                                 <MdAddAPhoto className="text-xl" />
                                 <span className="font-semibold">Photo Gallery</span>
+                            </Link>
+                            <Link
+                                to="/admin/blog"
+                                className={`py-2 pl-4 flex gap-2 items-center ${isActive(
+                                    "/admin/blog"
+                                )}`}
+                            >
+                                <FaBlog className="text-xl" />
+                                <span className="font-semibold">Blog</span>
                             </Link>
                             {/* <Link
                                 to="/dashboard/payments"
