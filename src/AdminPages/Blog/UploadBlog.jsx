@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { FaCamera } from "react-icons/fa";
+import useImageUpload from "../../Hooks/useImageUpload";
 
-const UploadBlog = ({ form, handleChange, handleSubmit, closeModal }) => {
+const UploadBlog = ({ form, setForm, handleChange, handleSubmit, closeModal }) => {
     const [thumbnail, setThumbnail] = useState(null);
+    const { uploadImage, isLoading, error } = useImageUpload();
 
-    const handleImageUpload = (e) => {
+    const handleImageUpload = async(e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setThumbnail(reader.result); // Save the image preview URL
+                // setForm((prevForm) => ({ ...prevForm, thumbnail: file })); 
             };
             reader.readAsDataURL(file);
+
+            const uploadedUrl = await uploadImage(file);
+            setForm((prevForm) => ({ ...prevForm, thumbnail: uploadedUrl })); 
+            console.log(uploadedUrl)
         }
     };
     return (
@@ -26,27 +33,31 @@ const UploadBlog = ({ form, handleChange, handleSubmit, closeModal }) => {
                 <form onSubmit={handleSubmit}>
                     <div className="flex gap-4 justify-between">
                         <div className="w-1/2">
-                            {/* <div className="mb-4 relative">
-                                <label className="block text-sm font-bold text-gray-50 uppercase mb-1" htmlFor="">Upload Thumbnil</label>
-                                <div className="bg-white rounded-lg md:h-[200px] h-[200px] p-4">
-
-                                </div>
-                                <div className="absolute top-1/2 bottom-1/2 left-1/2 right-1/2 text-4xl text-gray-500 cursor-pointer"><FaCamera /></div>
-                            </div> */}
                             <div className="mb-4 relative">
                                 <label className="block text-sm font-bold text-gray-50 uppercase mb-1">
                                     Upload Thumbnail
                                 </label>
-                                <div className="bg-white rounded-lg md:h-[200px] h-[200px] p-4 flex items-center justify-center overflow-hidden">
+                                <div className="bg-white rounded-lg md:h-[200px] h-[200px] p-4 flex items-center justify-center overflow-hidden relative">
                                     {thumbnail ? (
-                                        <img
-                                            src={thumbnail}
-                                            alt="Thumbnail Preview"
-                                            className=" h-full object-cover"
-                                        />
+                                        <>
+                                            <img
+                                                src={thumbnail}
+                                                alt="Thumbnail Preview"
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <button
+                                                onClick={() => setThumbnail(null)} // Reset the thumbnail state
+                                                className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1 px-2 text-sm hover:bg-red-800"
+                                            >
+                                                X
+                                            </button>
+                                        </>
                                     ) : (
-                                        <div className="text-gray-500 text-4xl cursor-pointer">
-                                            <FaCamera onClick={() => document.getElementById("thumbnailInput").click()} />
+                                        <div
+                                            className="text-gray-500 text-4xl cursor-pointer"
+                                            onClick={() => document.getElementById("thumbnailInput").click()}
+                                        >
+                                            <FaCamera />
                                         </div>
                                     )}
                                 </div>
@@ -58,6 +69,7 @@ const UploadBlog = ({ form, handleChange, handleSubmit, closeModal }) => {
                                     onChange={handleImageUpload}
                                 />
                             </div>
+
 
                             <div className="mb-4">
                                 <label
