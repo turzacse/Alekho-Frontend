@@ -7,6 +7,7 @@ import { GiHamburgerMenu, GiMedicines } from "react-icons/gi";
 import { LuBadgeHelp } from "react-icons/lu";
 import { IoIosAlbums, IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
+import BottomBar from "../../Components/Bottom/BottomBar";
 
 const DashboardLayout = () => {
     const [role, setRole] = useState("admin");
@@ -24,18 +25,16 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="relative min-h-screen flex bg-[#fff]">
+        <div className="">
+            <div className="relative  min-h-screen flex bg-[#fff]">
             {/* Sidebar */}
             <div
                 className={`drawer-side lg:static fixed inset-0 bg-gray-950 text-white z-50 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-                    } w-64 lg:w-auto`}
-                // className={`drawer-side lg:static fixed inset-0 bg-[#006666] text-white z-50 transition-transform duration-300 ${
-                //     isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-                // } w-64 lg:w-auto`}
+                    } w-64 lg:w-auto min-h-screen`}
             >
                 {/* Close Icon for Small Devices */}
                 <button
-                    className="absolute top-4 right-4 text-white text-2xl lg:hidden"
+                    className="absolute overflow-y-auto top-4 right-4 text-white text-2xl lg:hidden"
                     onClick={() => setIsSidebarOpen(false)} // Close sidebar
                 >
                     ✕
@@ -56,6 +55,7 @@ const DashboardLayout = () => {
                         <>
                             <Link
                                 to="/admin"
+                                onClick={() => setIsSidebarOpen(false)}
                                 className={`py-2 pl-4 flex gap-2 items-center ${isActive(
                                     "/admin"
                                 )}`}
@@ -65,6 +65,7 @@ const DashboardLayout = () => {
                             </Link>
                             <Link
                                 to="/admin/albums"
+                                onClick={() => setIsSidebarOpen(false)}
                                 className={`py-2 pl-4 flex gap-2 items-center ${isActive(
                                     "/admin/albums"
                                 )}`}
@@ -74,6 +75,7 @@ const DashboardLayout = () => {
                             </Link>
                             <Link
                                 to="/admin/photo-gallery"
+                                onClick={() => setIsSidebarOpen(false)}
                                 className={`py-2 pl-4 flex gap-2 items-center ${isActive(
                                     "/admin/photo-gallery"
                                 )}`}
@@ -83,6 +85,7 @@ const DashboardLayout = () => {
                             </Link>
                             <Link
                                 to="/admin/blog"
+                                onClick={() => setIsSidebarOpen(false)}
                                 className={`py-2 pl-4 flex gap-2 items-center ${isActive(
                                     "/admin/blog"
                                 )}`}
@@ -90,42 +93,7 @@ const DashboardLayout = () => {
                                 <FaBlog className="text-xl" />
                                 <span className="font-semibold">Blog</span>
                             </Link>
-                            {/* <Link
-                                to="/dashboard/payments"
-                                className={`py-2 pl-4 flex gap-2 items-center ${isActive(
-                                    "/dashboard/payments"
-                                )}`}
-                            >
-                                <MdOutlinePayment className="text-xl" />
-                                <span className="font-semibold">Payments</span>
-                            </Link> */}
-                            {/* <Link
-                                to="/dashboard/membership"
-                                className={`py-2 pl-4 flex gap-2 items-center ${isActive(
-                                    "/dashboard/membership"
-                                )}`}
-                            >
-                                <LuBadgeHelp className="text-xl" />
-                                <span className="font-semibold">Membership</span>
-                            </Link>
-                            <Link
-                                to="/dashboard/order-history"
-                                className={`py-2 pl-4 flex gap-2 items-center ${isActive(
-                                    "/dashboard/order-history"
-                                )}`}
-                            >
-                                <FaCartArrowDown className="text-xl" />
-                                <span className="font-semibold">Order History</span>
-                            </Link>
-                            <Link
-                                to="/dashboard/medicines"
-                                className={`py-2 pl-4 flex gap-2 items-center ${isActive(
-                                    "/dashboard/medicines"
-                                )}`}
-                            >
-                                <GiMedicines className="text-xl" />
-                                <span className="font-semibold">Medicine</span>
-                            </Link> */}
+                            
                         </>
                     )}
                 </ul>
@@ -174,10 +142,16 @@ const DashboardLayout = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="flex-grow overflow-auto p-4">
+                <div className="flex-grow mb-16 overflow-auto p-4">
                     <Outlet />
                 </div>
             </div>
+
+
+            
+        </div>
+
+          <BottomBar/>
         </div>
     );
 };

@@ -17,6 +17,7 @@ import DashboardLayout from './Layout/Dashboard/DashboardLayout.jsx';
 import Album from './AdminPages/Album/Album.jsx';
 import PhotoGallery from './AdminPages/PhotoGallery/PhotoGallery.jsx';
 import Blog from './AdminPages/Blog/Blog.jsx';
+import NewsFeed from './Pages/NewsFeed/NewsFeed.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/pricing',
         element: <Pricing/>
+      },
+      {
+        path: '/news-feed',
+        element: <NewsFeed/>
       }
     ]
   },
