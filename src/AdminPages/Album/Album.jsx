@@ -1,44 +1,35 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { CiEdit } from 'react-icons/ci';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { MdDeleteOutline } from 'react-icons/md';
 import Swal from 'sweetalert2';
 
 const Album = () => {
     // State for albums
-    const [albums, setAlbums] = useState([
-        // {
-        //     name: "Wedding Album",
-        //     event: "Wedding Ceremony",
-        //     shortName: "WA",
-        // },
-        // {
-        //     name: "Travel Memories",
-        //     event: "Vacation 2023",
-        //     shortName: "TM",
-        // },
-        // {
-        //     name: "Family Album",
-        //     event: "Family Reunion",
-        //     shortName: "FA",
-        // },
-        // {
-        //     name: "Family Album",
-        //     event: "Family Reunion",
-        //     shortName: "FA",
-        // },
-        // {
-        //     name: "Family Album",
-        //     event: "Family Reunion",
-        //     shortName: "FA",
-        // },
-    ]);
+    const [albums, setAlbums] = useState([]);
     const [form, setForm] = useState({ name: '', event: '' });
     const [drawerOpen, setDrawerOpen] = useState(false);
 
+    // useEffect(() => {
+    //     fetch('https://alekho-backend.vercel.app/api/v1/albums/get/all')
+    //         .then(res => res.json())
+    //         .then(data => setAlbums(data))
+    // }, [])
+    const fetchAlbums = async () => {
+        try {
+            const response = await fetch('https://alekho-backend.vercel.app/api/v1/albums/get/all');
+            const data = await response.json();
+            setAlbums(data);
+        } catch (error) {
+            console.error("Error fetching albums:", error);
+        }
+    };
+
+    // Call the fetchAlbums function inside useEffect
     useEffect(() => {
-        fetch('https://alekho-backend.vercel.app/api/v1/albums/get/all')
-        .then(res => res.json())
-        .then(data => setAlbums(data))
-    } ,[])
+        fetchAlbums();
+    }, []);
 
     // Handle form change
     const handleChange = (e) => {
@@ -48,17 +39,19 @@ const Album = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         // Show initial loading Swal
         Swal.fire({
             title: "Creating Album...",
             text: "Please wait while we create the album.",
+            background: '#030712',
+            color: 'white',
             allowOutsideClick: false,
             didOpen: () => {
                 Swal.showLoading();
             },
         });
-    
+
         try {
             // Make API call with Axios
             const response = await axios.post(
@@ -70,15 +63,18 @@ const Album = () => {
                     },
                 }
             );
-    
+
             // Handle success response
+            fetchAlbums();
             Swal.fire({
                 icon: "success",
                 title: "Album Created Successfully!",
                 text: "Your album has been added.",
+                background: '#030712',
+                color: 'white',
                 confirmButtonText: "OK",
             });
-    
+
             // Reset the form
             setForm({ name: "", event: "" }); // Clear form inputs
             setDrawerOpen(false); // Close the drawer
@@ -88,9 +84,68 @@ const Album = () => {
                 icon: "error",
                 title: "Failed to Create Album!",
                 text: error.response?.data?.message || error.message || "Something went wrong. Please try again.",
+                background: '#030712',
+                color: 'white',
                 confirmButtonText: "OK",
             });
         }
+    };
+
+    const DeleteAlbum = (id) => {
+        // Show confirmation prompt with swal2
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to delete this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            background: '#1f2937', // gray-950 bg color
+            color: 'white',         // white text
+            confirmButtonColor: '#d33', // red color for delete button
+            cancelButtonColor: '#3085d6', // blue color for cancel button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Make the delete request to the API if confirmed
+                fetch(`https://alekho-backend.vercel.app/api/v1/albums/delete/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data?.message == 'Album deleted successfully!') {
+                            // Show success notification if deletion is successful
+                            fetchAlbums();
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Album deleted successfully!',
+                                icon: 'success',
+                                background: '#1f2937',
+                                color: 'white',
+                            });
+                        } else {
+                            // Handle any failure response
+                            Swal.fire({
+                                title: 'Failed!',
+                                text: 'There was an error deleting the album.',
+                                icon: 'error',
+                                background: '#1f2937',
+                                color: 'white',
+                            });
+                            fetchAlbums();
+                        }
+                    })
+                    .catch((error) => {
+                        // Handle fetch error
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred while trying to delete the album.',
+                            icon: 'error',
+                            background: '#1f2937',
+                            color: 'white',
+                        });
+                    });
+            }
+        });
     };
 
     return (
@@ -112,9 +167,21 @@ const Album = () => {
                     {albums.map((album, index) => (
                         <div
                             key={index}
-                            className="bg-gray-300 shadow-md rounded-lg md:p-4 p-2 border"
+                            className="bg-gray-300 shadow-md rounded-lg md:p-4 p-2 border relative"
                         >
-                           <img src="/logo.png" className='rounded-full w-1/2 ' alt="" />
+                            <div className="absolute left-1 top-1 text-md text-white bg-green-600 rounded-full p-1">
+                                <CiEdit />
+                            </div>
+                            <div 
+                            
+                            className="absolute right-1 top-1 text-md text-white bg-red-500 rounded-full p-1 cursor-pointer ">
+                                <MdDeleteOutline
+                                onClick={() => {
+                                    DeleteAlbum(album?._id)
+                                }}
+                                />
+                            </div>
+                            <img src="/logo.png" className='rounded-full w-1/2 ' alt="" />
                             <h3 className=" font-bold text-gray-800">
                                 {album.name}
                             </h3>
@@ -133,8 +200,22 @@ const Album = () => {
             {drawerOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50">
                     <div className="w-full max-w-sm bg-gray-950 text-white p-6 shadow-lg">
-                        <h2 className="md:text-2xl font-medium uppercase mb-4">Create New Album</h2>
+                        {/* <h2 className="md:text-2xl font-medium uppercase mb-4">Create New Album</h2> */}
+                        <div className="flex justify-between items-center">
+                            <h2 className="md:text-2xl font-medium uppercase mb-4">Create New Album</h2>
+                            <div onClick={() => setDrawerOpen(false)} className='md:text-2xl text-xl text-red-500 font-bold cursor-pointer'><IoIosCloseCircleOutline /></div>
+                        </div>
                         <form onSubmit={handleSubmit}>
+
+                            <div className="my-4">
+                                <img className='rounded-xl max-w-full mx-auto' src="/logo.png" alt="" />
+                                <label
+                                    className="block text-center mt-2 text-green-500 text-[12px] font-bold mb-2"
+                                    htmlFor="name"
+                                >
+                                    DEFAULT ALBUM THUMBNIL
+                                </label>
+                            </div>
                             <div className="mb-4">
                                 <label
                                     className="block  text-sm font-bold mb-2"

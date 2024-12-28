@@ -8,6 +8,7 @@ import { LuBadgeHelp } from "react-icons/lu";
 import { IoIosAlbums, IoMdLogOut } from "react-icons/io";
 import { useState } from "react";
 import BottomBar from "../../Components/Bottom/BottomBar";
+import Dashboard from "../../AdminPages/Dashboard/Dashboard";
 
 const DashboardLayout = () => {
     const [role, setRole] = useState("admin");
@@ -142,7 +143,10 @@ const DashboardLayout = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="flex-grow mb-16 overflow-auto p-4">
+                <div className="flex-grow mb-16 md:mb-2 overflow-auto p-4">
+                    {
+                        location.pathname === '/admin' && <Dashboard />
+                    }
                     <Outlet />
                 </div>
             </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useImageUpload from '../../Hooks/useImageUpload';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 const PhotoGallery = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -178,7 +179,10 @@ const PhotoGallery = () => {
             {drawerOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50 ">
                     <div className="w-full overflow-y-auto max-w-md bg-gray-950 text-white p-6 pb-20 shadow-lg">
-                        <h2 className="md:text-2xl font-medium uppercase mb-4">Upload a New Photo</h2>
+                        <div className="flex justify-between items-center">
+                            <h2 className="md:text-2xl font-medium uppercase mb-4">Upload a New Photo</h2>
+                            <div onClick={() => setDrawerOpen(false)} className='md:text-2xl text-xl text-red-500 font-bold cursor-pointer'><IoIosCloseCircleOutline /></div>
+                        </div>
                         <form onSubmit={handleSubmit}>
                             {/* Image URL */}
                             <div className="mb-4">
@@ -284,15 +288,6 @@ const PhotoGallery = () => {
                                 <label className="block text-sm font-bold mb-2" htmlFor="gallery_album">
                                     Gallery Album
                                 </label>
-                                {/* <input
-                                    type="text"
-                                    id="gallery_album"
-                                    name="gallery_album"
-                                    value={form.gallery_album}
-                                    onChange={handleChange}
-                                    className="shadow appearance-none text-black border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                                    placeholder="Enter album name (optional)"
-                                /> */}
                                 <select
                                     id="gallery_album"
                                     name="gallery_album"
