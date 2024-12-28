@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const Album = () => {
     // State for albums
     const [albums, setAlbums] = useState([
-        {
-            name: "Wedding Album",
-            event: "Wedding Ceremony",
-            shortName: "WA",
-        },
-        {
-            name: "Travel Memories",
-            event: "Vacation 2023",
-            shortName: "TM",
-        },
-        {
-            name: "Family Album",
-            event: "Family Reunion",
-            shortName: "FA",
-        },
-        {
-            name: "Family Album",
-            event: "Family Reunion",
-            shortName: "FA",
-        },
-        {
-            name: "Family Album",
-            event: "Family Reunion",
-            shortName: "FA",
-        },
+        // {
+        //     name: "Wedding Album",
+        //     event: "Wedding Ceremony",
+        //     shortName: "WA",
+        // },
+        // {
+        //     name: "Travel Memories",
+        //     event: "Vacation 2023",
+        //     shortName: "TM",
+        // },
+        // {
+        //     name: "Family Album",
+        //     event: "Family Reunion",
+        //     shortName: "FA",
+        // },
+        // {
+        //     name: "Family Album",
+        //     event: "Family Reunion",
+        //     shortName: "FA",
+        // },
+        // {
+        //     name: "Family Album",
+        //     event: "Family Reunion",
+        //     shortName: "FA",
+        // },
     ]);
     const [form, setForm] = useState({ name: '', event: '' });
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    useEffect(() => {
+        fetch('https://alekho-backend.vercel.app/api/v1/albums/get/all')
+        .then(res => res.json())
+        .then(data => setAlbums(data))
+    } ,[])
 
     // Handle form change
     const handleChange = (e) => {
@@ -38,19 +46,51 @@ const Album = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Automatically generate shortName
-        const shortName = form.name
-            .split(' ')
-            .map((word) => word[0].toUpperCase())
-            .join('')
-            .slice(0, 3);
-
-        const newAlbum = { ...form, shortName };
-        setAlbums([...albums, newAlbum]); // Add new album to the list
-        setForm({ name: '', event: '' }); // Reset form
-        setDrawerOpen(false); // Close drawer
+    
+        // Show initial loading Swal
+        Swal.fire({
+            title: "Creating Album...",
+            text: "Please wait while we create the album.",
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
+    
+        try {
+            // Make API call with Axios
+            const response = await axios.post(
+                "https://alekho-backend.vercel.app/api/v1/albums/create",
+                form, // The form containing { name, event }
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+    
+            // Handle success response
+            Swal.fire({
+                icon: "success",
+                title: "Album Created Successfully!",
+                text: "Your album has been added.",
+                confirmButtonText: "OK",
+            });
+    
+            // Reset the form
+            setForm({ name: "", event: "" }); // Clear form inputs
+            setDrawerOpen(false); // Close the drawer
+        } catch (error) {
+            // Handle errors (API or network)
+            Swal.fire({
+                icon: "error",
+                title: "Failed to Create Album!",
+                text: error.response?.data?.message || error.message || "Something went wrong. Please try again.",
+                confirmButtonText: "OK",
+            });
+        }
     };
 
     return (
