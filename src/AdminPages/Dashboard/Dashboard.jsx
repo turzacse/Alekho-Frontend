@@ -14,6 +14,7 @@ const Dashboard = () => {
                         className="bg-gray-950 btn btn-sm hover:bg-gray-900 text-white font-bold py-2 md:text-[16px] text-[12px] px-4 rounded focus:outline-none uppercase flex gap-2 items-center"
                         onClick={() => {
                             navigate('/')
+                            // navigate to the home page 
                         }}
                     >
                         <FaHome /> Home
