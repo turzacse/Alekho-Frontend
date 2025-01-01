@@ -2,7 +2,7 @@
 
 Alekho Photography is a modern and elegant photography website designed to showcase creative works, manage bookings, and provide a seamless experience for clients to explore portfolios, blogs, and connect with the team. The website is built using the MERN stack and is fully responsive, ensuring a great user experience across all devices.
 
-## 🚀 Features
+## 🚀 Features::
 
 1. **Home Page with Image slider::**
    - A stunning slider featuring 5 high-quality images.
