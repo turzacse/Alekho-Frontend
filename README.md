@@ -4,7 +4,7 @@ Alekho Photography is a modern and elegant photography website designed to showc
 
 ## 🚀 Features
 
-1. **Home Page with Image Slider**
+1. **Home Page with Image slider::**
    - A stunning slider featuring 5 high-quality images.
    - Each image includes overlay text to deliver a unique message or highlight specific projects.
 
