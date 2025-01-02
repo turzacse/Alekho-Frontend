@@ -10,6 +10,7 @@ const Album = () => {
     const [albums, setAlbums] = useState([]);
     const [form, setForm] = useState({ name: '', event: '' });
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [oneAlbum, setOneAlbum] = useState({});
 
     // useEffect(() => {
     //     fetch('https://alekho-backend.vercel.app/api/v1/albums/get/all')
@@ -148,6 +149,15 @@ const Album = () => {
         });
     };
 
+    useEffect(()=>{
+        if(oneAlbum?._id){
+            setForm({
+                name: oneAlbum?.name,
+                event: oneAlbum?.event
+            })
+        }
+    } ,[oneAlbum])
+
     return (
         <div className="min-h-screen md:mt-5">
             <div className="">
@@ -169,8 +179,16 @@ const Album = () => {
                             key={index}
                             className="bg-gray-300 shadow-md rounded-lg md:p-4 p-2 border relative"
                         >
-                            <div className="absolute left-1 top-1 text-md text-white bg-green-600 rounded-full p-1">
-                                <CiEdit />
+                            <div className="absolute left-1 top-1 text-md text-white bg-green-600 rounded-full p-1 cursor-pointer">
+                                <CiEdit
+                                onClick={() => 
+                                {
+                                    setDrawerOpen(true)
+                                    setOneAlbum(album);
+                                    
+                                }
+                                }
+                                />
                             </div>
                             <div 
                             
@@ -182,7 +200,7 @@ const Album = () => {
                                 />
                             </div>
                             <img src="/logo.png" className='rounded-full w-1/2 ' alt="" />
-                            <h3 className=" font-bold text-gray-800">
+                            <h3 className="mt-2 font-bold text-gray-800">
                                 {album.name}
                             </h3>
                             <p className="text-gray-600">
@@ -199,11 +217,23 @@ const Album = () => {
             {/* Drawer */}
             {drawerOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50">
-                    <div className="w-full max-w-sm bg-gray-950 text-white p-6 shadow-lg">
+                    <div className={`w-full max-w-sm  text-white p-6 shadow-lg ${oneAlbum?._id ? 'bg-yellow-950': 'bg-gray-950'} `}>
                         {/* <h2 className="md:text-2xl font-medium uppercase mb-4">Create New Album</h2> */}
                         <div className="flex justify-between items-center">
-                            <h2 className="md:text-2xl font-medium uppercase mb-4">Create New Album</h2>
-                            <div onClick={() => setDrawerOpen(false)} className='md:text-2xl text-xl text-red-500 font-bold cursor-pointer'><IoIosCloseCircleOutline /></div>
+                            <h2 className="md:text-2xl font-medium uppercase mb-4">
+                                {
+                                    oneAlbum?._id ? 'Edit Album' : 'Create New Album'
+                                }
+                                {/* Create New Album */}
+                                </h2>
+                            <div onClick={() => {
+                                setDrawerOpen(false)
+                                setOneAlbum({});
+                                setForm({
+                                    name: '',
+                                    event: ''
+                                })
+                            }} className='md:text-2xl text-xl text-red-500 font-bold cursor-pointer'><IoIosCloseCircleOutline /></div>
                         </div>
                         <form onSubmit={handleSubmit}>
 
@@ -258,7 +288,14 @@ const Album = () => {
                                 <button
                                     type="button"
                                     className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none"
-                                    onClick={() => setDrawerOpen(false)}
+                                    onClick={() => {
+                                        setDrawerOpen(false)
+                                        setOneAlbum({});
+                                        setForm({
+                                            name: '',
+                                            event: ''
+                                        })
+                                    }}
                                 >
                                     Cancel
                                 </button>
@@ -266,7 +303,10 @@ const Album = () => {
                                     type="submit"
                                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
                                 >
-                                    Add Album
+                                    {
+                                        oneAlbum?._id ? 'Update Albun' : 'Create Album'
+                                    }
+                                    {/* Add Album */}
                                 </button>
                             </div>
                         </form>
