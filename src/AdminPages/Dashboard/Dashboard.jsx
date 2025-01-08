@@ -22,7 +22,7 @@ const Dashboard = () => {
                 </div>
 
 
-                {/* card */}
+                {/* card dashboard*/}
                 <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-white gap-4'>
                     <DashboardCard title={'Album'} value={'10'} color={'from-blue-950 via-blue-500 to-blue-950'} link = {'albums'} />
                     <DashboardCard title={'Image'} value={'1000'} color={'from-red-950 via-red-500 to-red-950'} link = {'photo-gallery'}/>
